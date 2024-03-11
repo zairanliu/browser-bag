@@ -1,5 +1,15 @@
 ---
-
+let bags = [];
+let degrees = [15, -15, , 30, 20, 50];
+for (let y = 0; y < 6; y++) {
+  for (let x = 0; x < 15; x++) {
+    bags.push({
+      x: x,
+      y: y,
+      rotate: degrees[y],
+    });
+  }
+}
 ---
 
 <html lang="en">
@@ -8,9 +18,83 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Browser Bag</title>
   </head>
+
   <body>
-    <h1>Astro</h1>
+    <div class="md:hidden max-height-screen overflow-hidden">
+      <p>*resize the window to switch bag size</p>
+      <h1 class="text-xl font-bold text-center mt-[30%]">Little Browser Bag</h1>
+      <img class="scale-[200%] mt-[40%]" src="bag.png" alt="paper bag" />
+    </div>
+
+    <!-- medium -->
+
+    <div
+      class="hidden md:block lg:hidden relative w-screen h-screen overflow-hidden"
+    >
+      <p>*resize the window to switch bag size</p>
+      <h1 class="absolute top-[40%] left-[20%] text-8xl z-10 font-bold">
+        Medium <br /> Browser <br /> Bag
+      </h1>
+      <img
+        class="w-40 absolute top-[35%] left-[40%] rotate-12"
+        src="bag.png"
+        alt="paper bag"
+      />
+      <img
+        class="w-40 absolute top-[55%] left-[20%] -rotate-45"
+        src="bag.png"
+        alt="paper bag"
+      />
+      <img
+        class="w-40 absolute top-[30%] left-[75%] rotate-45"
+        src="bag.png"
+        alt="paper bag"
+      />
+      <img
+        class="w-40 absolute top-[15%] left-[10%] -rotate-45"
+        src="bag.png"
+        alt="paper bag"
+      />
+    </div>
+
+    <!-- large -->
+    <div class="hidden lg:block relative w-screen h-screen overflow-hidden">
+      <p class="text-xl font-medium m-[1%]">
+        *resize the window to switch bag size (moving)
+      </p>
+
+      <a class="absolute w-screen text-3xl font-bold text-right" href="bag"
+        >Start Shopping (arrow)
+      </a>
+      <h1 class="absolute top-[15%] left-[20%] text-[144px] z-10 font-black">
+        Big <br /> Browser <br /> Bag
+      </h1>
+
+      <!-- insert bags -->
+      {
+        bags.map((bag) => {
+          return (
+            <img
+              class="w-[5%] absolute top-[15%] left-[40%] rotate-12"
+              style={{
+                top: `${bag.y * 12 + 25}%`,
+                left: `${bag.x * 8}%`,
+                transform: `rotate(${bag.rotate}deg)`,
+              }}
+              src="bag.png"
+              alt="paper bag"
+            />
+          );
+        })
+      }
+    </div>
   </body>
 </html>

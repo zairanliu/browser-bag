@@ -1,0 +1,320 @@
+---
+const itemClass = "cursor-pointer aspect-square h-full";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <style>
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+
+      @keyframes blink {
+        20% {
+          opacity: 0.5;
+        }
+        50% {
+          color: grey;
+          opacity: 1;
+        }
+        80% {
+          opacity: 0.5;
+        }
+      }
+      .blink {
+        animation: blink 1s linear infinite;
+      }
+    </style>
+    <title>Browser Bag</title>
+  </head>
+  <body>
+    <div class="bg-[url('/public/lg-bg.png')] bg-contain md:bscale-[200%]">
+      <div class="p-4">
+        <!-- instructions -->
+
+        <div
+          class="md:text-sm lg:text-xl blink flex gap-5 text-xs font-medium m-[1%] justify-between duration-300 ease-in-out"
+        >
+          <span> *Resize the window to switch bag size</span>
+          <span class="hidden md:inline lg:inline">
+            *Hover to check details</span
+          >
+          <span> *Click to Add to Your Shopping Bag</span>
+        </div>
+
+        <div class="flex mx-10 justify-between">
+          <div>
+            <h1
+              class="text-xl leading-tight md:text-4xl lg:text-6xl font-light transition-all duration-500 ease-in-out"
+            >
+              Shop with
+              <span class="hidden lg:block lg:text-[96px] lg:font-black">
+                *Big*</span
+              >
+              <span class="hidden md:block lg:hidden md:text-4xl md:font-bold">
+                *Medium*</span
+              >
+              <span class="md:hidden lg:hidden block">*Little*</span>
+              Browser Bag
+            </h1>
+          </div>
+          <div id="tag">
+            <!-- <h1
+            class="text-sm py-12 shrink-0 min-w-[290px] lg:min-w-[380px] md:text-4xl lg:text-6xl lg:font-black font-light md:font-medium transition-all duration-500 ease-in-out"
+          >
+          </h1> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- display size -->
+      <div
+        id="displaySize"
+        class="hidden absolute top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10"
+      >
+      </div>
+
+      <!-- items and receipts -->
+      <div class="md:flex">
+        <div class="flex-grow px-6 print:hidden">
+          <!-- Small -->
+          <div class="md:hidden p-8 grid grid-cols-2 gap-8">
+            <img
+              onclick="add2Receipt('Big ring', 22000)"
+              class={itemClass}
+              onmouseover="displaySize('13.9*13.5*16')"
+              onmouseleave="hideSize()"
+              src="cmt.png"
+              alt="big
+          diamond ring"
+            />
+            <img
+              onclick="add2Receipt('Small ring', 6000)"
+              class={itemClass}
+              src="tfny.png"
+              alt="small diamond ring"
+            />
+            <img
+              onclick="add2Receipt('Muji Pencil', 9)"
+              class={itemClass}
+              src="pencil.png"
+              alt=""
+            />
+            <img
+              onclick="add2Receipt('Muji Gel pen', 4)"
+              class={itemClass}
+              src="gel-pen.png"
+              alt=""
+            />
+          </div>
+
+          <!-- Medium -->
+          <div class="hidden md:grid lg:hidden p-8 grid-cols-2 gap-8">
+            <img
+              id="breville"
+              onmouseover="displaySize('13.9*13.5*16')"
+              onmouseleave="hideSize()"
+              src="breville.png"
+              onclick="add2Receipt('Barista Pro', 849.95)"
+              class={itemClass}
+              alt=""
+            />
+
+            <img
+              class="lamp"
+              src="lamp.png"
+              onmouseover="displaySize('14*6')"
+              onmouseleave="hideSize()"
+              onclick="add2Receipt('FORSÅ Lamp', 34.99)"
+              class={itemClass}
+              alt=""
+            />
+            <img
+              src="floor-lamp.png"
+              style="aspect-ratio: 0.5; grid-row: span 2"
+              onclick="add2Receipt('EVEDAL Floor lamp', 349.99)"
+              class={itemClass}
+              alt=""
+            />
+
+            <img
+              id="bird"
+              onmouseover="displaySize('11*3.25*11')"
+              onmouseleave="hideSize()"
+              src="bird.png"
+              onclick="add2Receipt('Eames House Bird', 495.00)"
+              class={itemClass}
+              alt=""
+            />
+            <img
+              id="clock"
+              onmouseover="displaySize('13')"
+              onmouseleave="hideSize()"
+              onclick="add2Receipt('Nelson Ball Clock', 485.00)"
+              src="clock.png"
+              alt=""
+            />
+
+            <img
+              src="cart.png"
+              onmouseover="displaySize('32*19*11')"
+              onmouseleave="hideSize()"
+              onclick="add2Receipt('NISSAFORS Utility cart', 24.99)"
+              class={itemClass}
+              alt=""
+            />
+
+            <img
+              src="ikeabag.png"
+              onmouseover="displaySize('21*35*14')"
+              onmouseleave="hideSize()"
+              onclick="add2Receipt('FRAKTA Bag', 0.99)"
+              class={itemClass}
+              alt=""
+            />
+          </div>
+
+          <!-- Large -->
+          <div class="hidden lg:grid">
+            <div>
+              <img
+                id="sofa"
+                onmouseover="displaySize('28*88*5½')"
+                onmouseleave="hideSize()"
+                onclick="add2Receipt('Lispenard Sofa', 6095.00)"
+                class="cursor-pointer mt-[10px] rotate-12"
+                src="sofa.png"
+                alt=""
+              />
+            </div>
+
+            <img
+              id="fancysofa"
+              onclick="add2Receipt('Luva Modular Double Chaise Sectional',18500.00)"
+              onmouseover="displaySize('41*158*68')"
+              onmouseleave="hideSize()"
+              class="cursor-pointer mt-[-150px] w-[50%] hover:`displaySize()` -rotate-12"
+              src="hmsofa.png"
+              alt=""
+            />
+
+            <img
+              id="couch"
+              onclick="add2Receipt('KIVIK sectional', 2049.00)"
+              onmouseover="displaySize('101*136*32)"
+              onmouseleave="hideSize()"
+              class="cursor-pointer mt-[-400px] -rotate-12"
+              src="couch.png"
+              alt=""
+            />
+            <img
+              id="table"
+              onclick="add2Receipt('Doubleframe Table', 3495.00)"
+              onmouseover="displaySize('29*70*36')"
+              onmouseleave="hideSize()"
+              class="cursor-pointer mt-[-80px] mr-0 w-[20%] rotate-90"
+              src="hmtable.png"
+              alt=""
+            />
+
+            <img
+              id="billy"
+              onclick="add2Receipt('Billy Bookcase', 69.00)"
+              onmouseover="displaySize('31*11*79)"
+              onmouseleave="hideSize()"
+              class="cursor-pointer mt-[-300px] -rotate-12"
+              src="billy.png"
+              alt=""
+            />
+            <img
+              id="kallax"
+              onclick="add2Receipt('Kallax', 89.00)"
+              onmouseover="displaySize('31*11*79)"
+              onmouseleave="hideSize()"
+              class="cursor-pointer mt-[300px] w-[50%] rotate-45"
+              src="kallax.png"
+              alt=""
+            />
+
+            <img
+              id="hmtable"
+              onclick="add2Receipt('MÖCKELBY Table', 999)"
+              onmouseover="displaySize('92*39*29)"
+              onmouseleave="hideSize()"
+              class="cursor-pointer mt-[-150px] w-[50%] -rotate-12"
+              src="table.png"
+              alt=""
+            />
+            <!-- smaller -->
+            <img
+              id="Eames Desk Unit"
+              src="hmdesk.png"
+              onmouseover="displaySize('29*60*28')"
+              onmouseleave="hideSize()"
+              onclick="add2Receipt('Eames Desk Unit', 2915.00)"
+              class="cursor-pointer mt-[-150px] ml-[20px] rotate-12"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <div
+          class="shrink-0 min-w-[290px] lg:min-w-[380px] md:border-l-4 border-solid border-black print:w-full print:border-4 print:box-border"
+        >
+          <h1></h1>
+          <h2
+            class="text-center font-semibold lg:font-black text-lg md:text-2xl transition-all"
+          >
+            Your Bag
+          </h2>
+          <ul id="shopping-list" class="mt-4 px-4"></ul>
+          <h2
+            class="text-center font-semibold lg:font-black text-lg md:text-2xl transition-all"
+          >
+            Subtotal: $<span id="subtotal">0</span>
+          </h2>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline>
+      function add2Receipt(name, price) {
+        const shoppingList = document.querySelector("#shopping-list");
+        const subtotal = document.querySelector("#subtotal");
+
+        shoppingList.innerHTML += `<li class="flex justify-between my-1"><span class="font-bold">${name}</span><span>$${price}</span></li>`;
+        subtotal.innerHTML = Number(
+          parseFloat(subtotal.innerHTML) + parseFloat(price)
+        ).toFixed(2);
+      } // parseInt 字符串变整数
+
+      function displaySize(size) {
+        const itemSize = document.querySelector("#displaySize");
+        const tag = document.querySelector("#tag");
+
+        itemSize.innerHTML = `<div class="text-center md:text-8xl md:font-bold lg:text-[240px] lg:font-black"><span>${size}</span></div>`;
+        itemSize.style.display = "block";
+        tag.innerHTML = `<h2 class= "text-xl py-12 min-w-[290px] lg:min-w-[380px] md:text-4xl lg:text-6xl lg:font-black font-medium md:font-medium">*Item Size*</h2>`;
+        tag.style.display = "block";
+      }
+
+      function hideSize() {
+        const itemSize = document.querySelector("#displaySize");
+        const tag = document.querySelector("#tag");
+        itemSize.style.display = "none";
+        tag.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
