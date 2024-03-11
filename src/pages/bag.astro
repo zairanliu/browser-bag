@@ -39,7 +39,7 @@ const itemClass = "cursor-pointer aspect-square h-full";
     <title>Browser Bag</title>
   </head>
   <body>
-    <div class="bg-[url('/public/lg-bg.png')] bg-contain md:bscale-[200%]">
+    <div class="bg-[url('/lg-bg.png')] min-h-screen bg-[length:400px_400px]">
       <div class="p-4">
         <!-- instructions -->
 
@@ -69,11 +69,12 @@ const itemClass = "cursor-pointer aspect-square h-full";
               Browser Bag
             </h1>
           </div>
-          <div id="tag" class="relative">
-            <h1
-              class="text-sm py-12 shrink-0 min-w-[290px] lg:min-w-[380px] md:text-4xl lg:text-6xl lg:font-black font-light md:font-medium transition-all duration-500 ease-in-out"
+          <div id="tag" class="relative hidden">
+            <h2
+              class="absolute right-0 text-right text-xl py-12 min-w-[290px] lg:min-w-[380px] md:text-4xl lg:text-6xl lg:font-black font-medium md:font-medium"
             >
-            </h1>
+              *Item Size*
+            </h2>
           </div>
         </div>
       </div>
@@ -92,7 +93,7 @@ const itemClass = "cursor-pointer aspect-square h-full";
           <div class="md:hidden p-8 grid grid-cols-2 gap-8">
             <img
               onclick="add2Receipt('Big ring', 22000)"
-              class={itemClass}
+              class="cursor-pointer aspect-square h-full scale-50"
               onmouseover="displaySize('13.9*13.5*16')"
               onmouseleave="hideSize()"
               src="cmt.png"
@@ -101,19 +102,19 @@ const itemClass = "cursor-pointer aspect-square h-full";
             />
             <img
               onclick="add2Receipt('Small ring', 6000)"
-              class={itemClass}
+              class="cursor-pointer aspect-square h-full"
               src="tfny.png"
               alt="small diamond ring"
             />
             <img
               onclick="add2Receipt('Muji Pencil', 9)"
-              class={itemClass}
+              class="cursor-pointer aspect-[1/2] h-full"
               src="pencil.png"
               alt=""
             />
             <img
               onclick="add2Receipt('Muji Gel pen', 4)"
-              class={itemClass}
+              class="cursor-pointer aspect-[1/2] h-full"
               src="gel-pen.png"
               alt=""
             />
@@ -181,7 +182,7 @@ const itemClass = "cursor-pointer aspect-square h-full";
               src="ikeabag.png"
               onmouseover="displaySize('21*35*14')"
               onmouseleave="hideSize()"
-              onclick="add2Receipt('FRAKTA Bag', 0.99)"
+              onclick="add2Receipt('FRAKTA Bag', 0.99, 4)"
               class={itemClass}
               alt=""
             />
@@ -214,9 +215,9 @@ const itemClass = "cursor-pointer aspect-square h-full";
             <img
               id="couch"
               onclick="add2Receipt('KIVIK sectional', 2049.00)"
-              onmouseover="displaySize('101*136*32)"
+              onmouseover="displaySize('101*136*32')"
               onmouseleave="hideSize()"
-              class="cursor-pointer mt-[-400px] -rotate-12"
+              class="cursor-pointer mt-[-100px] -rotate-12 scale-125"
               src="couch.png"
               alt=""
             />
@@ -225,7 +226,7 @@ const itemClass = "cursor-pointer aspect-square h-full";
               onclick="add2Receipt('Doubleframe Table', 3495.00)"
               onmouseover="displaySize('29*70*36')"
               onmouseleave="hideSize()"
-              class="cursor-pointer mt-[-80px] mr-0 w-[20%] rotate-90"
+              class="cursor-pointer mt-[-80px] mr-0 w-[20%] rotate-90 translate-x-40"
               src="hmtable.png"
               alt=""
             />
@@ -233,18 +234,18 @@ const itemClass = "cursor-pointer aspect-square h-full";
             <img
               id="billy"
               onclick="add2Receipt('Billy Bookcase', 69.00)"
-              onmouseover="displaySize('31*11*79)"
+              onmouseover="displaySize('31*11*79')"
               onmouseleave="hideSize()"
-              class="cursor-pointer mt-[-300px] -rotate-12"
+              class="cursor-pointer mt-[-100px] -rotate-12"
               src="billy.png"
               alt=""
             />
             <img
               id="kallax"
               onclick="add2Receipt('Kallax', 89.00)"
-              onmouseover="displaySize('31*11*79)"
+              onmouseover="displaySize('31*11*79')"
               onmouseleave="hideSize()"
-              class="cursor-pointer mt-[300px] w-[50%] rotate-45"
+              class="cursor-pointer mt-[100px] w-[50%] rotate-45"
               src="kallax.png"
               alt=""
             />
@@ -252,7 +253,7 @@ const itemClass = "cursor-pointer aspect-square h-full";
             <img
               id="hmtable"
               onclick="add2Receipt('MÖCKELBY Table', 999)"
-              onmouseover="displaySize('92*39*29)"
+              onmouseover="displaySize('92*39*29')"
               onmouseleave="hideSize()"
               class="cursor-pointer mt-[-150px] w-[50%] -rotate-12"
               src="table.png"
@@ -272,7 +273,7 @@ const itemClass = "cursor-pointer aspect-square h-full";
         </div>
 
         <div
-          class="shrink-0 min-w-[290px] lg:min-w-[380px] md:border-l-4 border-solid border-black print:w-full print:border-4 print:box-border"
+          class="shrink-0 md:w-[290px] lg:w-[380px] md:border-l-4 border-solid border-black print:w-full print:border-4 print:box-border"
         >
           <h1></h1>
           <h2
@@ -291,11 +292,16 @@ const itemClass = "cursor-pointer aspect-square h-full";
     </div>
 
     <script is:inline>
-      function add2Receipt(name, price) {
+      function add2Receipt(name, price, size = 1) {
         const shoppingList = document.querySelector("#shopping-list");
         const subtotal = document.querySelector("#subtotal");
 
-        shoppingList.innerHTML += `<li class="flex justify-between my-1"><span class="font-bold">${name}</span><span>$${price}</span></li>`;
+        const priceTagSize = 4 * Math.log(price) + 10;
+        const priceTagWeight = Math.log(price) * 100;
+
+        const nameTagSize = size * 16;
+
+        shoppingList.innerHTML += `<li class="flex justify-between gap-x-4 flex-wrap my-1"><span class="font-bold leading-none" style="font-size: ${nameTagSize}px">${name}</span><span class="flex-grow text-right" style="font-size: ${priceTagSize}px; font-weight: ${priceTagWeight}">$${price}</span></li>`;
         subtotal.innerHTML = Number(
           parseFloat(subtotal.innerHTML) + parseFloat(price)
         ).toFixed(2);
@@ -307,7 +313,6 @@ const itemClass = "cursor-pointer aspect-square h-full";
 
         itemSize.innerHTML = `<div class="text-center md:text-8xl md:font-bold lg:text-[240px] lg:font-black"><span>${size}</span></div>`;
         itemSize.style.display = "block";
-        tag.innerHTML = `<h2 class= "absolute right-0 text-xl py-12 min-w-[290px] lg:min-w-[380px] md:text-4xl lg:text-6xl lg:font-black font-medium md:font-medium">*Item Size*</h2>`;
         tag.style.display = "block";
       }
 
