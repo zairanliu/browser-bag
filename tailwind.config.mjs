@@ -10,13 +10,11 @@ export default {
       'lg': '1024px',
       // => @media (min-width: 1280px) { ... }
     },
+
 		extend: {
 			fontFamily:{
-			'sans': [ "Work Sans", 'sans-serif'],
-			},
-			backgroundImage:{
-				'lgGrid':"url('./public/lg-bg.png')",
-			}
+				'sans': [ "Work Sans", 'sans-serif'],
+				},
 		},
 	},
 	plugins: [],
