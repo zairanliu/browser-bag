@@ -69,11 +69,11 @@ const itemClass = "cursor-pointer aspect-square h-full";
               Browser Bag
             </h1>
           </div>
-          <div id="tag">
-            <!-- <h1
-            class="text-sm py-12 shrink-0 min-w-[290px] lg:min-w-[380px] md:text-4xl lg:text-6xl lg:font-black font-light md:font-medium transition-all duration-500 ease-in-out"
-          >
-          </h1> -->
+          <div id="tag" class="relative">
+            <h1
+              class="text-sm py-12 shrink-0 min-w-[290px] lg:min-w-[380px] md:text-4xl lg:text-6xl lg:font-black font-light md:font-medium transition-all duration-500 ease-in-out"
+            >
+            </h1>
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@ const itemClass = "cursor-pointer aspect-square h-full";
       <!-- display size -->
       <div
         id="displaySize"
-        class="hidden absolute top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10"
+        class="hidden fixed top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10 pointer-events-none"
       >
       </div>
 
@@ -132,7 +132,6 @@ const itemClass = "cursor-pointer aspect-square h-full";
             />
 
             <img
-              class="lamp"
               src="lamp.png"
               onmouseover="displaySize('14*6')"
               onmouseleave="hideSize()"
@@ -142,6 +141,8 @@ const itemClass = "cursor-pointer aspect-square h-full";
             />
             <img
               src="floor-lamp.png"
+              onmouseover="displaySize('D13*H57')"
+              onmouseleave="hideSize()"
               style="aspect-ratio: 0.5; grid-row: span 2"
               onclick="add2Receipt('EVEDAL Floor lamp', 349.99)"
               class={itemClass}
@@ -163,6 +164,7 @@ const itemClass = "cursor-pointer aspect-square h-full";
               onmouseleave="hideSize()"
               onclick="add2Receipt('Nelson Ball Clock', 485.00)"
               src="clock.png"
+              class={itemClass}
               alt=""
             />
 
@@ -305,7 +307,7 @@ const itemClass = "cursor-pointer aspect-square h-full";
 
         itemSize.innerHTML = `<div class="text-center md:text-8xl md:font-bold lg:text-[240px] lg:font-black"><span>${size}</span></div>`;
         itemSize.style.display = "block";
-        tag.innerHTML = `<h2 class= "text-xl py-12 min-w-[290px] lg:min-w-[380px] md:text-4xl lg:text-6xl lg:font-black font-medium md:font-medium">*Item Size*</h2>`;
+        tag.innerHTML = `<h2 class= "absolute right-0 text-xl py-12 min-w-[290px] lg:min-w-[380px] md:text-4xl lg:text-6xl lg:font-black font-medium md:font-medium">*Item Size*</h2>`;
         tag.style.display = "block";
       }
 
