@@ -24,6 +24,20 @@ for (let y = 0; y < 6; y++) {
       href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <style>
+      @keyframes train {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100vw);
+        }
+      }
+
+      .train-animation {
+        animation: train 200s linear infinite;
+      }
+    </style>
     <title>Browser Bag</title>
   </head>
 
@@ -67,8 +81,16 @@ for (let y = 0; y < 6; y++) {
 
     <!-- large -->
     <div class="hidden lg:block relative w-screen h-screen overflow-hidden">
-      <p class="text-xl font-medium m-[1%]">
-        *resize the window to switch bag size (moving)
+      <p class="text-xl font-medium m-[1%] text-nowrap train-animation">
+        *resize the window to switch bag size *resize the window to switch bag
+        size *resize the window to switch bag size *resize the window to switch
+        bag size *resize the window to switch bag size *resize the window to
+        switch bag size *resize the window to switch bag size *resize the window
+        to switch bag size *resize the window to switch bag size *resize the
+        window to switch bag size *resize the window to switch bag size *resize
+        the window to switch bag size *resize the window to switch bag size
+        *resize the window to switch bag size *resize the window to switch bag
+        size *resize the window to switch bag size
       </p>
 
       <a class="absolute w-screen text-3xl font-bold text-right" href="bag"
