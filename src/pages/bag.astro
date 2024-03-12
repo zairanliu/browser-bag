@@ -24,6 +24,12 @@ const itemClass = "cursor-pointer aspect-square h-full";
         object-fit: contain;
       }
 
+      .bg-boxes {
+        background-color: #ffffff;
+        background-image: linear-gradient(#fff890 1.5px, transparent 1.5px),
+          linear-gradient(to right, #fff890 1.5px, #ffffff 1.5px);
+      }
+
       @keyframes blink {
         0% {
           color: black;
@@ -44,7 +50,7 @@ const itemClass = "cursor-pointer aspect-square h-full";
   </head>
   <body>
     <div
-      class="lg:bg-[url('/lg-bg.png')] md:bg-[url('/md-bg.svg')] bg-[url('/sm-bg.png')] min-h-screen bg-[length:400px_400px]"
+      class="bg-boxes bg-[left_-0.5px_top_-0.5px] bg-[length:25vw_25vw] md:bg-[length:5vw_5vw] lg:bg-[length:2vw_2vw] transition-all min-h-screen"
     >
       <div class="p-4">
         <!-- instructions -->
