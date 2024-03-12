@@ -55,7 +55,7 @@ for (let y = 0; y < 9; y++) {
   </head>
 
   <body>
-    <div class="md:hidden max-height-screen overflow-hidden">
+    <div class="md:hidden max-h-screen overflow-hidden">
       <p class="text-xl font-medium m-[1%] text-nowrap train-animation">
         <span class="text-sm material-symbols-outlined"> open_in_full</span> resize
         the window to switch bag size
@@ -97,7 +97,7 @@ for (let y = 0; y < 9; y++) {
         >
       </div>
       <h1
-        class="absolute mx-[10%] my-[10%] text-8xl z-10 text-center font-bold"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-8xl z-10 text-center font-bold"
       >
         *Medium* <br /> Browser <br /> Bag
       </h1>
@@ -145,22 +145,22 @@ for (let y = 0; y < 9; y++) {
     </div>
 
     <!-- large -->
-    <div class="hidden lg:block relative w-screen h-screen overflow-hidden">
+    <div
+      class="hidden lg:flex lg:items-center relative w-screen h-screen overflow-hidden"
+    >
       <div
-        class="mx-10 flex flex-row items-center justify-between m-[3%] text-black"
+        class="flex-grow mx-10 flex flex-row items-center justify-between m-[3%] text-black"
       >
         <span
-          class="z-10 text-[300px] material-symbols-outlined hover:text-yellow-400"
+          class="z-10 text-[20vw] material-symbols-outlined hover:text-yellow-400"
         >
           open_in_full</span
         >
-        <div>
-          <h1 class="text-center leading-none text-[144px] z-10 font-black">
-            *Big* <br /> Browser <br /> Bag
-          </h1>
-        </div>
+        <h1 class="text-center leading-none text-[10vw] z-10 font-black">
+          *Big* <br /> Browser <br /> Bag
+        </h1>
         <a
-          class="z-10 text-[300px] material-symbols-outlined hover:text-yellow-400"
+          class="z-10 text-[20vw] material-symbols-outlined hover:text-yellow-400"
           href="bag">subdirectory_arrow_right</a
         >
       </div>
