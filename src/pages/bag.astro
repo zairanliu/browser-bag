@@ -209,7 +209,7 @@ const itemClass = "cursor-pointer aspect-square h-full";
             <div>
               <img
                 id="sofa"
-                onmouseover="displaySize('28*88*5½', '#sofa')"
+                onmouseover="displaySize('28*88*5½')"
                 onmouseleave="hideSize()"
                 onclick="add2Receipt('Lispenard Sofa', 6095.00,4)"
                 class="cursor-pointer"
@@ -252,16 +252,16 @@ const itemClass = "cursor-pointer aspect-square h-full";
               onclick="add2Receipt('Billy Bookcase', 69.00,3)"
               onmouseover="displaySize('31*11*79')"
               onmouseleave="hideSize()"
-              class="cursor-pointer scale-50"
+              class="cursor-pointer aspect-square"
               src="billy.png"
               alt=""
             />
             <img
               id="kallax"
               onclick="add2Receipt('Kallax', 89.00,3)"
-              onmouseover="displaySize('31*11*79')"
+              onmouseover="displaySize('30*15*57')"
               onmouseleave="hideSize()"
-              class="cursor-pointer scale-50"
+              class="cursor-pointer aspect-square"
               src="kallax.png"
               alt=""
             />
@@ -323,15 +323,12 @@ const itemClass = "cursor-pointer aspect-square h-full";
         ).toFixed(2);
       } // parseInt 字符串变整数
 
-      function displaySize(size, image) {
+      function displaySize(size) {
         const itemSize = document.querySelector("#displaySize");
-        const itemImg = document.querySelector("#displayImg");
         const tag = document.querySelector("#tag");
 
         itemSize.innerHTML = `<div class="text-center md:text-8xl md:font-bold lg:text-[240px] lg:font-black"><span>${size}</span></div>`;
         itemSize.style.display = "block";
-        itemImg.innerHTML = `<img scr="${image}">`;
-        itemImg.style.display = "block";
         tag.style.display = "block";
       }
 
