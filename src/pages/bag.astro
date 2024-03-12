@@ -315,7 +315,7 @@ const itemClass = "cursor-pointer aspect-square h-full";
         const priceTagSize = 4 * Math.log(price) + 10;
         const priceTagWeight = Math.log(price) * 100;
 
-        const nameTagSize = size * 16;
+        const nameTagSize = size * 12;
 
         shoppingList.innerHTML += `<li class="flex justify-between gap-x-4 flex-wrap my-1"><span class="font-bold leading-none" style="font-size: ${nameTagSize}px">${name}</span><span class="flex-grow text-right" style="font-size: ${priceTagSize}px; font-weight: ${priceTagWeight}">$${price}</span></li>`;
         subtotal.innerHTML = Number(

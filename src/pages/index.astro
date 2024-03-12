@@ -30,6 +30,10 @@ for (let y = 0; y < 9; y++) {
     />
 
     <style>
+      * {
+        @apply select-none;
+      }
+
       .material-symbols-outlined {
         font-variation-settings:
           "FILL" 0,
@@ -88,15 +92,20 @@ for (let y = 0; y < 9; y++) {
       >
         <span
           class="z-10 text-[240px] material-symbols-outlined hover:text-yellow-400"
+          onmouseover="modifyMdTitle('Adjust browser,<br> change bag size')"
+          onmouseout="modifyMdTitle()"
         >
           open_in_full</span
         >
         <a
           class="z-10 text-[240px] material-symbols-outlined hover:text-yellow-400"
-          href="bag">subdirectory_arrow_right</a
+          href="bag"
+          onmouseover="modifyMdTitle('Start Shopping')"
+          onmouseout="modifyMdTitle()">subdirectory_arrow_right</a
         >
       </div>
       <h1
+        id="md-title"
         class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-8xl z-10 text-center font-bold"
       >
         *Medium* <br /> Browser <br /> Bag
@@ -153,15 +162,22 @@ for (let y = 0; y < 9; y++) {
       >
         <span
           class="z-10 text-[20vw] material-symbols-outlined hover:text-yellow-400"
+          onmouseover="modifyLgTitle('Adjust browser,<br> change bag size')"
+          onmouseout="modifyLgTitle()"
         >
           open_in_full</span
         >
-        <h1 class="text-center leading-none text-[10vw] z-10 font-black">
+        <h1
+          id="lg-title"
+          class="text-center leading-none text-[10vw] z-10 font-black"
+        >
           *Big* <br /> Browser <br /> Bag
         </h1>
         <a
           class="z-10 text-[20vw] material-symbols-outlined hover:text-yellow-400"
-          href="bag">subdirectory_arrow_right</a
+          href="bag"
+          onmouseover="modifyLgTitle('Start Shopping')"
+          onmouseout="modifyLgTitle()">subdirectory_arrow_right</a
         >
       </div>
       <!-- insert bags -->
@@ -183,6 +199,16 @@ for (let y = 0; y < 9; y++) {
       }
     </div>
 
-    <script></script>
+    <script is:inline>
+      function modifyLgTitle(text = "*Big* <br /> Browser <br /> Bag") {
+        const title = document.querySelector("#lg-title");
+        title.innerHTML = text;
+      }
+
+      function modifyMdTitle(text = "*Medium* <br /> Browser <br /> Bag") {
+        const title = document.querySelector("#md-title");
+        title.innerHTML = text;
+      }
+    </script>
   </body>
 </html>
